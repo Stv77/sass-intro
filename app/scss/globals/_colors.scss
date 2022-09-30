@@ -1,0 +1,14 @@
+:root {
+    --background-color: hsl(0, 0%, 13%);
+    --text-color: hsl(0, 0%, 100%);
+}
+
+.magenta {
+    // @extend %widget;
+    background-color: hsl(300, 100%, 30%);
+}
+
+.green{
+    // @extend .grid__widget; (8.)
+    background-color: hsl(120, 100%, 27%);
+}

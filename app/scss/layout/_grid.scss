@@ -1,0 +1,69 @@
+@use "../util" as u;
+
+//(10.)
+// %widget {
+//     padding: u.rem(16);
+// }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; //(1.)
+  grid-template-rows: auto auto; //(2.)
+  gap: 40px;
+  //max-width: 1000px; (3.)
+  width: min(100% - u.rem(40), 1000px); //(4.)
+  margin-inline: auto; //(5.)
+
+  // (6.)
+  @include u.breakpoint(large) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  &__main,
+  &__sidebar {
+    padding: 40px;
+  }
+
+  &__main {
+    background-color: hsl(240, 99%, 33%);
+
+    //(7.)
+    @include u.breakpoint(medium) {
+      background-color: hsl(120, 100%, 16%);
+    }
+
+    @include u.breakpoint(large) {
+      background-color: hsl(39, 100%, 35%);
+    }
+  }
+
+  &__sidebar {
+    @include u.breakpoint-down(medium) {
+      text-align: center;
+    }
+    @include u.breakpoint-down(small) {
+      text-align: right;
+    }
+  }
+  &__widget {
+    //(9.)
+    //(11.)
+    padding: u.rem(16);
+  }
+}
+
+/*Note
+(1.) 59:09-59:29
+(2.) 1:02:03
+(3.) 1:19:29
+(4.) 1:28:24
+(5.) 1:20:36, 1:20:58, 1:23:22 => center the content when the screen is wider than 1000px
+(6.) 1:07:09, 1:13:04 => it's not always necessary to target every device width with media query
+(7.) 1:58:30, 2:02:44
+(8.) 3:27:42, 3:30:19
+(9.) 3:29:22 => $widget: &;
+(10.) 3:31:26 - 3:32:00 => placeholder and you can use it in widget(8.)
+(11.) 3:33:29 => nesting and bem
+(12.) 3:35:27 => helper
+*/
